@@ -8,6 +8,7 @@
 
 
 char *read_line();
+char ** split_line(char * line);
 
 int main(int argc, char const *argv[])
 {
@@ -64,3 +65,4 @@ char * read_line()
     }
     
 }
+
