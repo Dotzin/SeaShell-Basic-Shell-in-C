@@ -10,6 +10,7 @@
 
 char *read_line();
 char ** split_line(char * line);
+int dash_exit(char **args);
 
 int main(int argc, char const *argv[])
 {
@@ -20,6 +21,7 @@ int main(int argc, char const *argv[])
     {
         printf("Sea > ");
         line = read_line();
+        args = split_line(line);
     } while (status);
     
     
@@ -103,4 +105,9 @@ char ** split_line(char * line)
     tokens[position] = NULL;
 
     return tokens;
+}
+
+int dash_exit(char **args)
+{
+    return 0;
 }
