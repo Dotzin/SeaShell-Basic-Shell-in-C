@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+char *read_line();
+
 int main(int argc, char const *argv[])
 {
     char *line;
@@ -8,9 +10,14 @@ int main(int argc, char const *argv[])
     int status = 1;
     do
     {
-        printf("Sea >");
-    } while (status==1);
+        printf("Sea > ");
+    } while (status);
     
     
     return EXIT_SUCCESS;
+}
+
+char * read_line()
+{
+
 }
