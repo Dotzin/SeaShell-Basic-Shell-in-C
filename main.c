@@ -130,3 +130,4 @@ int dash_execute(char **args)
     }
 
     return 1;
+}
