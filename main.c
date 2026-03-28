@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <process.h>
-#include <windows.h>
 
 #define TOK_DELIM " \t\r\n"
 #define RED "\033[0;31m"
@@ -11,10 +10,10 @@
 
 char *read_line();
 char **split_line(char *line);
-int dash_exit(char **args);
+int dash_dock(void);
 int dash_execute(char **args);
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     char *line;
     char **args;
@@ -22,6 +21,7 @@ int main(int argc, char const *argv[])
 
     while (status)
     {
+        
         printf("Sea > ");
         line = read_line();
         args = split_line(line);
@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
 
 char *read_line()
 {
-    int buffsize = 1024;
+    int buffsize = TK_BUFF_SIZE;
     int position = 0;
     char *buffer = malloc(sizeof(char) * buffsize);
     int c;
@@ -113,21 +113,20 @@ char **split_line(char *line)
 }
 
 
-int dash_exit(char **args)
+int dash_dock(void)
 {
     return 0;
 }
 
 int dash_execute(char **args)
 {
-    if (strcmp(args[0], "exit") == 0)
-        return dash_exit(args);
+    if (strcmp(args[0], "dock") == 0)
+        return dash_dock();
 
-    int ret = _spawnvp(_P_WAIT, args[0], args);
+    int ret = _spawnvp(_P_WAIT, args[0], (const char * const *) args);
     if (ret == -1)
     {
         printf(RED "dash: command not found: %s\n" RESET, args[0]);
     }
 
     return 1;
-}
