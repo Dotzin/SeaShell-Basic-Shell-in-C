@@ -3,13 +3,13 @@
 #include <string.h>
 #include <process.h>
 #include "utils/errorsutil.h"
+#include "built/builtfunctions.h"
 
 #define TOK_DELIM " \t\r\n"
 #define TK_BUFF_SIZE 1024
 
 char *read_line();
 char **split_line(char *line);
-int dash_dock(void);
 int dash_execute(char **args);
 
 int main(void)
@@ -108,10 +108,8 @@ char **split_line(char *line)
 }
 
 
-int dash_dock(void)
-{
-    return 0;
-}
+int dash_dock(void);
+
 
 int dash_execute(char **args)
 {
