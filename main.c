@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <process.h>
+#include "utils/errorsutil.h"
 
 #define TOK_DELIM " \t\r\n"
-#define RED "\033[0;31m"
-#define RESET "\033[0m"
 #define TK_BUFF_SIZE 1024
 
 char *read_line();
@@ -45,8 +44,7 @@ char *read_line()
 
     if (!buffer)
     {
-        fprintf(stderr, RED "dash: Allocation error" RESET "\n");
-        exit(EXIT_FAILURE);
+        memoryAllocationError();
     }
 
     while (1)
@@ -69,8 +67,7 @@ char *read_line()
             buffer = realloc(buffer, buffsize);
             if (!buffer)
             {
-                fprintf(stderr, RED "dash: Allocation error" RESET "\n");
-                exit(EXIT_FAILURE);
+                memoryAllocationError();
             }
         }
     }
@@ -85,8 +82,7 @@ char **split_line(char *line)
 
     if (!tokens)
     {
-        fprintf(stderr, RED "dash: Allocation error" RESET "\n");
-        exit(EXIT_FAILURE);
+        memoryAllocationError();
     }
 
     token = strtok(line, TOK_DELIM);
@@ -101,8 +97,7 @@ char **split_line(char *line)
             tokens = realloc(tokens, buffsize * sizeof(char *));
             if (!tokens)
             {
-                fprintf(stderr, RED "dash: Allocation error" RESET "\n");
-                exit(EXIT_FAILURE);
+                memoryAllocationError();
             }
         }
 
@@ -126,7 +121,7 @@ int dash_execute(char **args)
     int ret = _spawnvp(_P_WAIT, args[0], (const char * const *) args);
     if (ret == -1)
     {
-        printf(RED "dash: command not found: %s\n" RESET, args[0]);
+        notFoundError(args);
     }
 
     return 1;
