@@ -2,5 +2,6 @@
 #define ERRORSUTIL_H
 
 void memoryAllocationError();
-void notFoundError();
+void notFoundError(char **args);
+
 #endif
