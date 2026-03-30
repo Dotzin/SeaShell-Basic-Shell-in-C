@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "../utils/errors/errorsutil.h"
-#include "parser/parsers.h"
+#include "parsers.h"
 
 #define TK_BUFF_SIZE 1024 //Sets the default token size as 2^10
 #define TOK_DELIM " \t\r\n" // Sets the token delimiter as " "" and the breaks \t \r and \n
