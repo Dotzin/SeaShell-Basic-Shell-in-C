@@ -1,5 +1,6 @@
 # Sea Shell
 
+![SeaShell Logo](./Assets/SeaShellLogo.png)
 
 ### What it is?
 
