@@ -8,6 +8,9 @@
 int dash_execute(char **args)
 {
     // compares the first argument with a built-in command
+    if (strcmp(args[0], "help") == 0)
+        return dash_help();
+
     if (strcmp(args[0], "dock") == 0)
         return dash_dock();
 
