@@ -4,5 +4,6 @@
 // Built-in command that stops the shell
 int dash_dock(void);
 int dash_help(void);
+int dash_echo(char **args);
 
 #endif
